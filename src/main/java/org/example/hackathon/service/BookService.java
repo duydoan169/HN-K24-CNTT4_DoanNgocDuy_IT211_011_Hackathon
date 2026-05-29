@@ -17,7 +17,7 @@ public class BookService {
     private final BookRepository bookRepository;
 
     public Page<BookResponse> getAllBooks(String search, Pageable pageable){
-        return bookRepository.findBookByAuthorContainingAndTitleContaining(search, pageable).map(this::entityToResponse);
+        return bookRepository.findBookByAuthorContainingAndTitleContaining(search, search, pageable).map(this::entityToResponse);
     }
 
     public BookResponse createBook(BookRequest bookRequest){
